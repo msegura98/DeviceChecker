@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		712BC3011D2183D500950851 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 712BC3001D2183D500950851 /* Alamofire.framework */; };
 		71A565461D1DC21100DC92F3 /* DeviceChecker.h in Headers */ = {isa = PBXBuildFile; fileRef = 71A565451D1DC21100DC92F3 /* DeviceChecker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		71A5654D1D1DC21100DC92F3 /* DeviceChecker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71A565421D1DC21100DC92F3 /* DeviceChecker.framework */; };
 		71A565521D1DC21100DC92F3 /* DeviceCheckerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A565511D1DC21100DC92F3 /* DeviceCheckerTests.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		712BC3001D2183D500950851 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Carthage/Checkouts/Alamofire/build/Debug-iphoneos/Alamofire.framework"; sourceTree = "<group>"; };
 		71A565421D1DC21100DC92F3 /* DeviceChecker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DeviceChecker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71A565451D1DC21100DC92F3 /* DeviceChecker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceChecker.h; sourceTree = "<group>"; };
 		71A565471D1DC21100DC92F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -38,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				712BC3011D2183D500950851 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,6 +58,7 @@
 		71A565381D1DC21100DC92F3 = {
 			isa = PBXGroup;
 			children = (
+				712BC3001D2183D500950851 /* Alamofire.framework */,
 				71A565441D1DC21100DC92F3 /* DeviceChecker */,
 				71A565501D1DC21100DC92F3 /* DeviceCheckerTests */,
 				71A565431D1DC21100DC92F3 /* Products */,
@@ -319,6 +323,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Checkouts/Alamofire/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = DeviceChecker/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -337,6 +345,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Checkouts/Alamofire/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = DeviceChecker/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -385,6 +397,7 @@
 				71A565581D1DC21100DC92F3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		71A565591D1DC21100DC92F3 /* Build configuration list for PBXNativeTarget "DeviceCheckerTests" */ = {
 			isa = XCConfigurationList;
@@ -393,6 +406,7 @@
 				71A5655B1D1DC21100DC92F3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
