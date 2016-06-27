@@ -46,9 +46,10 @@ class DeviceChecker {
         let request = NSMutableURLRequest(URL: self.url);
         
         request.HTTPMethod = "POST"
-        request.cachePolicy = .ReloadIgnoringLocalCacheData;
+        request.cachePolicy = .ReloadIgnoringLocalAndRemoteCacheData;
         
-        let dataToBeSent : [String : String] = ["app-id" : self.appID]
+        let dataToBeSent : [String : String] = ["app-id" : self.appID,
+                                                "device-id" : self.deviceID]
         
         do {
             let jsonData = try NSJSONSerialization.dataWithJSONObject(dataToBeSent, options: .PrettyPrinted);
