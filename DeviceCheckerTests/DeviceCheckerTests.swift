@@ -29,7 +29,19 @@ class DeviceCheckerTests: XCTestCase {
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measureBlock {
-            // Put the code you want to measure the time of here.
+            let expectation = self.expectationWithDescription("Complete request");
+            
+            let checker = DeviceChecker(url: NSURL(string: "http://example.org/")!, deviceID: "123", appID: "456", testing: true);
+            
+            checker.mainTask(nil, completion: {() -> Void in
+                expectation.fulfill();
+            })
+            
+            self.waitForExpectationsWithTimeout(5.0, handler: {(error) -> Void in
+                if let error = error {
+                    print(error);
+                }
+            })
         }
     }
     

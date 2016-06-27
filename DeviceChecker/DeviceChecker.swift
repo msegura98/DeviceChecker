@@ -21,13 +21,9 @@ class DeviceChecker {
     
     var mainTimer : NSTimer;
     
-    var count : Int = 0;
-    
-    init(url: NSURL, deviceID: String, appID: String) {
+    init(url: NSURL, deviceID: String, appID: String, testing: Bool) {
         //self.url = url;
         self.deviceID = deviceID;
-        
-        print("\(UIDevice.currentDevice().identifierForVendor!.UUIDString)")
         
         self.appID = appID;
         //self.application = application;
@@ -36,12 +32,13 @@ class DeviceChecker {
         
         self.mainTimer = NSTimer();
         
-        self.mainTimer = NSTimer(timeInterval: 1.0, target: self, selector: #selector(self.mainTask(_:)), userInfo: nil, repeats: true);
-        
-        NSRunLoop.mainRunLoop().addTimer(self.mainTimer, forMode: NSRunLoopCommonModes);
+        self.mainTimer = NSTimer(timeInterval: 10.0, target: self, selector: #selector(self.mainTask(_:completion:)), userInfo: nil, repeats: true);
+        if !testing {
+            NSRunLoop.mainRunLoop().addTimer(self.mainTimer, forMode: NSRunLoopCommonModes);
+        }
     }
     
-    @objc func mainTask(sender: AnyObject?) {
+    @objc func mainTask(sender: AnyObject?, completion: (() -> Void)? ) {
         let session = NSURLSession.sharedSession();
         let request = NSMutableURLRequest(URL: self.url);
         
@@ -54,14 +51,16 @@ class DeviceChecker {
         do {
             let jsonData = try NSJSONSerialization.dataWithJSONObject(dataToBeSent, options: .PrettyPrinted);
             
-            request.HTTPBody = jsonData;
+            let jsonString = String(data: jsonData, encoding: NSASCIIStringEncoding)!
+            
+            request.HTTPBody = jsonString.dataUsingEncoding(NSUTF8StringEncoding);
             
             let task = session.dataTaskWithRequest(request, completionHandler: {(data, response, error) -> Void in
-                print("Request Completed \(self.count)");
+                print("Request Completed");
                 print("Request Data: \(data)")
                 print("Request Response: \(response)");
                 print("Request error: \(error)");
-                self.count = self.count + 1;
+                completion?();
             });
             
             task.resume();
