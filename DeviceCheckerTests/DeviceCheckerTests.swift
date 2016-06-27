@@ -31,9 +31,9 @@ class DeviceCheckerTests: XCTestCase {
         self.measureBlock {
             let expectation = self.expectationWithDescription("Complete request");
             
-            let checker = DeviceChecker(url: NSURL(string: "http://example.org/")!, deviceID: "123", appID: "456", testing: true);
+            let checker = DeviceChecker(url: NSURL(string: "http://example.org/")!, appID: "456", testing: true);
             
-            checker.mainTask(nil, completion: {() -> Void in
+            checker.sendRequest({() -> Void in
                 expectation.fulfill();
             })
             
