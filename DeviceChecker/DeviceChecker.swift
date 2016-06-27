@@ -21,7 +21,7 @@ class DeviceChecker {
     
     var mainTimer : NSTimer;
     
-    init(url: NSURL, deviceID: String, appID: String, testing: Bool) {
+    public init(url: NSURL, deviceID: String, appID: String, testing: Bool) {
         //self.url = url;
         self.deviceID = deviceID;
         
