@@ -52,6 +52,7 @@ public class DeviceChecker {
                                                 "battery-state" : self.initialBatteryState.rawValue];
         
         request(.POST, url, parameters: dataToBeSent, encoding: .JSON).response {(response) in
+            print(response)
             completion();
         };
     }
