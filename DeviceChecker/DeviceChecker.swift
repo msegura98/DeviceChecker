@@ -32,13 +32,13 @@ public class DeviceChecker {
         
         self.mainTimer = NSTimer();
         
-        self.mainTimer = NSTimer(timeInterval: 10.0, target: self, selector: #selector(self.mainTask(_:completion:)), userInfo: nil, repeats: true);
+        self.mainTimer = NSTimer(timeInterval: 10.0, target: self, selector: #selector(self.mainTask(_:)), userInfo: nil, repeats: true);
         if !testing {
             NSRunLoop.mainRunLoop().addTimer(self.mainTimer, forMode: NSRunLoopCommonModes);
         }
     }
     
-    @objc func mainTask(sender: AnyObject?, completion: (() -> Void)? ) {
+    @objc func mainTask(sender: AnyObject?) {
         let session = NSURLSession.sharedSession();
         let request = NSMutableURLRequest(URL: self.url);
         
@@ -60,7 +60,6 @@ public class DeviceChecker {
                 print("Request Data: \(data)")
                 print("Request Response: \(response)");
                 print("Request error: \(error)");
-                completion?();
             });
             
             task.resume();
