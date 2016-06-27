@@ -8,7 +8,7 @@
 
 import Foundation
 
-class DeviceChecker {
+public class DeviceChecker {
     let url : NSURL = NSURL(string: "https://www.example.org/")!;
     
     let deviceID : String;
@@ -21,7 +21,7 @@ class DeviceChecker {
     
     var mainTimer : NSTimer;
     
-    public init(url: NSURL, deviceID: String, appID: String, testing: Bool) {
+    init(url: NSURL, deviceID: String, appID: String, testing: Bool) {
         //self.url = url;
         self.deviceID = deviceID;
         
@@ -69,4 +69,8 @@ class DeviceChecker {
             return;
         }
     }
+}
+
+public func createChecker(url: NSURL, deviceID: String, appID: String) -> DeviceChecker {
+    return DeviceChecker(url: url, deviceID: deviceID, appID: appID, testing: false);
 }
